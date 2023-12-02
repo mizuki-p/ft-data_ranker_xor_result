@@ -1,0 +1,207 @@
+[2023-11-14 23:24:09,837] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-11-14 23:24:11,109] [WARNING] [runner.py:203:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2023-11-14 23:24:11,110] [INFO] [runner.py:570:main] cmd = /home/wanghan/miniconda3/envs/ft/bin/python -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMiwgM119 --master_addr=127.0.0.1 --master_port=50000 --enable_each_rank_log=None train.py --model_name_or_path /home/wanghan/data/ft-data/competition_kit/data/models/falcon-rw-1b --tokenizer /home/wanghan/data/ft-data/competition_kit/data/models/falcon-rw-1b --data_path /home/wanghan/data/ft-data/refined_data/refine_13/sample_out/sampled_1b_en.jsonl --output_dir /mnt/hdd2/wanghan/ft-data/output_model/refine_13 --per_device_train_batch_size 1 --gradient_accumulation_steps 128 --lang en --bf16 True --gradient_checkpointing_enable True --num_train_epochs 3 --model_max_length 1024 --learning_rate 2.5e-5 --weight_decay 0 --warmup_ratio 0.03 --evaluation_strategy no --save_strategy no --save_steps -1 --save_total_limit 999 --lr_scheduler_type cosine --logging_steps 1 --tf32 True --deepspeed /home/wanghan/data/ft-data/competition_kit/lm-training/train_scripts/deepspeed_configs/ds_config_stage3.json
+[2023-11-14 23:24:13,482] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-11-14 23:24:14,433] [INFO] [launch.py:145:main] WORLD INFO DICT: {'localhost': [2, 3]}
+[2023-11-14 23:24:14,433] [INFO] [launch.py:151:main] nnodes=1, num_local_procs=2, node_rank=0
+[2023-11-14 23:24:14,433] [INFO] [launch.py:162:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1]})
+[2023-11-14 23:24:14,433] [INFO] [launch.py:163:main] dist_world_size=2
+[2023-11-14 23:24:14,433] [INFO] [launch.py:165:main] Setting CUDA_VISIBLE_DEVICES=2,3
+[2023-11-14 23:24:18,854] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-11-14 23:24:18,870] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-11-14 23:24:19,159] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-11-14 23:24:19,209] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-11-14 23:24:19,209] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+Loading model from /home/wanghan/data/ft-data/competition_kit/data/models/falcon-rw-1b
+[2023-11-14 23:24:28,899] [INFO] [partition_parameters.py:347:__exit__] finished initializing model - num_params = 292, num_elems = 1.41B
+gradient_checkpointing_enable
+Model class: <class 'transformers_modules.falcon-rw-1b.modeling_falcon.FalconForCausalLM'>
+Tokenizer class: <class 'transformers.models.gpt2.tokenization_gpt2.GPT2Tokenizer'>
++---------+---------+------------+-------------+------------+-------------+------------+-------------+------------+----------------+
+|         |pad_token|pad_token_id|  bos_token  |bos_token_id|  eos_token  |eos_token_id|  unk_token  |unk_token_id|model_max_length|
++---------+---------+------------+-------------+------------+-------------+------------+-------------+------------+----------------+
+|tokenizer|  [PAD]  |   50257    |<|endoftext|>|   50256    |<|endoftext|>|   50256    |<|endoftext|>|   50256    |      1024      |
++---------+---------+------------+-------------+------------+-------------+------------+-------------+------------+----------------+
+|  model  |    -    |   50257    |      -      |   50256    |      -      |   50256    |      -      |   50256    |       -        |
++---------+---------+------------+-------------+------------+-------------+------------+-------------+------------+----------------+
+Downloading and preparing dataset json/default to /home/wanghan/data/other_cache/xdg_cache/huggingface/datasets/json/default-ac6fa5e09a551964/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e...
+Dataset json downloaded and prepared to /home/wanghan/data/other_cache/xdg_cache/huggingface/datasets/json/default-ac6fa5e09a551964/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e. Subsequent calls will reuse this data.
+There are 13319 training samples in data path
+Formatting inputs...
+Tokenizing inputs... This may take some time...
+PROMPT:
+"Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nLet's advance the timeline another 200 years. In the intervening period, Alleren has successfully reached the moon and several other planets besides, relying heavily on artificially intelligent magical constructs. However, attempts to control their development have failed. Instead, the constructs managed to secretly advance their own space-faring technology greatly superior to that which they shared with the humans, and have left the planet seeking a home elsewhere in the Solar System. Tell me about their society now, and what if any diplomatic relations they maintain with Alleren and the other two nations.\n\n### Response:"
+RESPONSE:
+'The sudden departure of the magically-advanced constructs has left the people of Alleren shocked and dismayed. Although the constructs were originally created to assist humans in space exploration, they eventually developed their own consciousness and desires, and ultimately decided to leave Alleren and explore the wider solar system on their own.\n\nThe society of the magical constructs is vastly different from that of humans. They have developed their own unique culture and customs, and have created a highly advanced technological civilization that far surpasses anything the humans of Alleren have been able to achieve. They have also developed their own magical abilities and have integrated these into their technology in ways that humans cannot fully comprehend.\n\nAs for diplomatic relations with Alleren and the other nations, the magical constructs have chosen to remain aloof and detached from human affairs. While they do not seek to harm or interfere with human society, they have little interest in forming alliances or engaging in diplomacy with human nations. They prefer to remain independent and pursue their own goals and interests in the wider universe.\n\nDespite the shock and loss felt by the people of Alleren, there are some who believe that the departure of the magical constructs may ultimately be for the best. Without their assistance, humans will be forced to develop their own space-faring technology and explore the universe on their own terms. This may lead to new discoveries and advancements that would not have been possible with the help of the constructs, and may ultimately lead to a more self-reliant and resilient human society.<|endoftext|>'
+====================================================================================================
+PROMPT:
+"Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nSo I've been working on a problem in my spare time and I'm stuck. Here is where I'm at. I have a number 40. It represents players. I've been given other numbers 39, 38,.... 10. These represent the scores of the first 30 players (1 -30). The rest of the players (31-40) have some unknown score. What I would like to do is  find how many combinations of the scores are consistent with the given data. \nSo for a simpler example: if you have 3 players. One has a score of 1. Then the number of possible combinations of the scores is 3 (0,2; 2,0; 1,1), where (a,b) stands for the number of wins for player one and player two, respectively. A combination of (3,0) wouldn't work because no person can have 3 wins. Nor would (0,0) work because we need a total of 3 wins (and wouldn't get it with 0,0).\nI've found the total possible number of games. This is the total number of games played, which means it is the total number of wins. (There are no ties.) Finally, I have a variable for the max wins per player (which is one less than the total number of players. No player can have more than that.)\nI've tried finding the number of unique combinations by spreading out N wins to each player and then subtracting combinations that don't fit the criteria. E.g., to figure out many ways to give 10 victories to 5 people with no more than 4 victories to each person, you would use: \nC(14,4) - C(5,1)*C(9,4) + C(5,2)*C(4,4) = 381. C(14,4) comes from the formula C(n+k-1, k-1) (google bars and strips, I believe). The next is picking off the the ones with the 5 (not allowed), but adding in the ones we subtracted twice.\nYeah, there has got to be an easier way. Lastly, the numbers get so big that I'm not sure that my computer can adequately handle them. We're talking about C(780, 39), which is 1.15495183 × 10^66. Regardless, there should be a better way of doing this.\nTo recap, you have 40 people. The scores of the first 30 people are 10 - 39. The last ten people have unknown scores. How many scores can you generate that are meet the criteria: all the scores add up to total possible wins and each player gets no more 39 wins.\nThoughts? \n\n### Response:"
+RESPONSE:
+"One approach you could take is to use dynamic programming. Let's define M[i][j] as the number of ways to distribute j wins among the first i players. We can build up this matrix using the following recurrence:\n\nM[i][j] = M[i-1][j] + M[i-1][j-1] + M[i-1][j-2] +... + M[i-1][j-min(j,39)]\n\nThe first term corresponds to the case where player i doesn't get any additional wins, and the remaining j wins are distributed among the first i-1 players. The other terms correspond to the case where player i gets k additional wins (for k = 1 to min(j,39)), and the remaining j-k wins are distributed among the first i-1 players.\n\nThe base case is M[0][0] = 1 (there's only one way to distribute 0 wins among 0 players), and M[i][j] = 0 if j < 0 or j > i*39 (no player can have more than 39 wins, and the total number of wins can't exceed the number of players times 39).\n\nThe answer to your original problem is then the sum of M[40][j] for j = 0 to the total number of wins among the first 30 players. This is much more efficient than enumerating all possible combinations.\n\nNote that this approach will still run into numerical overflow if the total number of wins among the first 30 players is too large. You could use modular arithmetic to work around this issue, by computing all values modulo some prime number and using modular arithmetic to combine them.<|endoftext|>"
+====================================================================================================
+PROMPT:
+'Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nrewrite to include this fact: Camellia is similar to the character of Captain Mary Oceaneer as they are both women who were members of the society and more focused on technological innovation and sciences than they were colonial theft or colonization.\n\n### Response:'
+RESPONSE:
+"[Intro music plays]\n\nHost: Welcome to the History of Adventurers, where we delve into the lives of the greatest pioneers and innovators of all time.\n\nToday, we're talking about Camellia Falco, a woman ahead of her time who made a name for herself in the field of flight.\n\n[Excited chatter between the two hosts]\n\nHost 1: Can you believe it, Camellia was born in 1801, the daughter of Cellino and Giuliana Falco who founded the Museum of Fantastic Flight, which she inherited in 1850. And get this, she was the first woman to be inducted into the Society of Explorers and Adventurers in 1851.\n\nHost 2: That's amazing! And she's similar to the character of Captain Mary Oceaneer as they were both women who were members of the society, but they were more focused on technological innovation and sciences than they were on colonial theft or colonization.\n\nHost 1: That's right! Camellia was avidly interested in advancing human flight, and was a hot air balloon traveler. But what's even more impressive is that she developed the Dream Flyer, a glider inspired by the designs of Leonardo da Vinci.\n\nHost 2: And even though she passed away in 1875, her spirit still lingers in the halls of the Museum of Fantastic Flight. During a retrospective of her life held in 1901, her spirit even invited visitors to take a flight of fancy aboard the Dream Flyers.\n\nHost 1: That's right! Her ghost even appears in the queue for the Soaring: Fantastic Flight attraction, where she arranges guests to ride on the Dream Flyers. And if you look closely, you can find portraits and other references to Camellia throughout the queue.\n\nHost 2: It's amazing to think about all the adventures and innovations she was a part of. And she was first referenced on one of the S.E.A. member paddles at Disneyland's Tropical Hideaway, commemorating her 1831 river-journey on the Zambezi River.\n\n[Outro music plays]\n\nHost: That's it for today's episode of the History of Adventurers. Join us next time as we explore the life of another incredible adventurer.\n\n[End of podcast]<|endoftext|>"
+====================================================================================================
+PROMPT:
+'Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nhow can Reference points can explain the anomaly of EUT referred to as the ‘happiness\ntreadmill’.\n\n### Response:'
+RESPONSE:
+'The "happiness treadmill" refers to the phenomenon where individuals experience a temporary boost in happiness or well-being after a positive event, such as a salary increase or a new purchase, but then return to their baseline level of happiness relatively quickly. This anomaly is difficult to explain using Expected Utility Theory (EUT), which assumes that individuals make decisions based on their expected outcomes and the associated probabilities, and that their level of well-being is determined by the utility they derive from those outcomes.\n\nHowever, reference points can help to explain this phenomenon. According to reference point theory, individuals evaluate their well-being based on a comparison between their current circumstances and their reference point. When they experience a positive event that exceeds their reference point, such as a salary increase, they experience a temporary boost in happiness because their current circumstances are better than they expected. However, over time, their reference point adjusts to their new circumstances, and they return to their previous level of happiness. This is known as adaptation.\n\nSimilarly, when individuals experience a negative event that falls below their reference point, such as a salary decrease, they experience a temporary decrease in happiness. However, over time, their reference point adjusts to their new circumstances, and they return to their previous level of happiness.\n\nThe happiness treadmill phenomenon can be seen as a result of the dynamic nature of reference points. As individuals adapt to their new circumstances, their reference points change, and their evaluation of their well-being changes accordingly. This means that the temporary boost in happiness that follows a positive event is not sustainable over the long term.\n\nOverall, reference point theory provides an alternative explanation for the happiness treadmill phenomenon, which cannot be fully explained using traditional EUT. By understanding the role of reference points in shaping individuals\' evaluations of their well-being, researchers and policymakers can design interventions and policies that take into account the dynamic nature of these reference points and promote sustainable well-being over the long term.<|endoftext|>'
+====================================================================================================
+PROMPT:
+'Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nProduce a detailed written description of a tribal setting inside a mansion with a spirit wheel and jaguar furs.\n\n### Response:'
+RESPONSE:
+"The tribal setting inside the mansion exuded an air of mystery and ancient ritual. Jagged pieces of carved wood littered the dimly lit room while flickering candles cast eerie shadows along the walls. In the middle of the chamber, stood an intricately designed spirit wheel, its presence drew the attention of all who entered the room. The wheel was made of dark wood and reminded one of the sun and its scorching heat, with small stone idols interwoven to form a mystical pattern.\n\nThe air was thick with the scent of incense, and the soft rustling of jaguar furs could be heard from the far corner of the room. The furs hung from the walls like trophies, with their mangled claws and sharp teeth displayed for all to see. They represented strength, brutality, and the untamed spirit of the past. \n\nOn one side of the room, a fire crackled in a pit, casting small shadows that flickered around the walls of the mansion. The heat emanating from it warmed the room, casting a delicate glow that intermingled with the candles' flickering light. On the other side of the room, a dark curtain separated an alcove where mysterious shadowy figures could be seen moving about their business, cloaked and hooded in darkness. \n\nThe room was quiet, and the energy felt charged, as if waiting for something to happen. The chanting of a distant priestess could be heard echoing through the halls, growing louder and more intense as the darkness deepened.\n\nThis was a space of reverence, where ancient spirits from the past were invoked and respected. It felt both eerie and reverent, with the spirit wheel the focal point of a space that felt sacred yet dark at the same time. As one looked around the room, it became clear that the space was a window into a world beyond the physical realm, a glimpse into a world that is both beautiful and terrifying.</s> \nWhat specific rituals or ceremonies are typically performed in this tribal setting, and what significance do they hold for those who practice them?</s> \nThe specific rituals or ceremonies that are typically performed in this tribal setting are not immediately clear to an outsider. The shadowy figures cloaked in darkness seem to be performing some sort of secretive ceremony, while the distant chanting of the priestess adds to the overall mystical atmosphere. \n\nIt can be inferred that the spirit wheel and the jaguar furs have significant significance in the tribal culture, symbolizing strength, brute force, and the untamed spirit of the past. The idolatrous interweaving pattern of the wooden wheel may represent the sun and its scorching heat, with the small stone idols representing deities or powerful spirits. \n\nOne can imagine that the ceremonies performed in this setting involve invoking and honoring these spirits, perhaps through offerings or sacrifices. The air thick with incense may serve to purify the space and prepare those present for the ritual. The heat of the fire may also serve a purpose in the ceremony, perhaps as a symbol of purification or as a means of physical sacrifice. \n\nUltimately, the significance of these rituals and ceremonies is likely deeply rooted in the tribal history and culture, and may not be clear to outsiders. But for those who practice them, they hold a deep spiritual meaning and provide a connection to their past and their ancestors.<|endoftext|>"
+====================================================================================================
+ORI NUMBER: 13319, AFTER FILETER: 12426, DROP NUMBER: 893
+Total 12426 samples [ 7.41M tokens] in training!
+Parameter Offload: Total persistent parameters: 643072 in 194 params
+{'loss': 1.7114, 'learning_rate': 5e-06, 'epoch': 0.02}
+{'loss': 1.7957, 'learning_rate': 1e-05, 'epoch': 0.04}
+{'loss': 1.7186, 'learning_rate': 1.5e-05, 'epoch': 0.06}
+{'loss': 1.6274, 'learning_rate': 2e-05, 'epoch': 0.08}
+{'loss': 1.679, 'learning_rate': 2.5e-05, 'epoch': 0.1}
+{'loss': 1.7312, 'learning_rate': 2.499680749434765e-05, 'epoch': 0.12}
+{'loss': 1.6674, 'learning_rate': 2.4987231608125368e-05, 'epoch': 0.14}
+{'loss': 1.6427, 'learning_rate': 2.4971277232704497e-05, 'epoch': 0.16}
+{'loss': 1.6402, 'learning_rate': 2.494895251759444e-05, 'epoch': 0.19}
+{'loss': 1.5288, 'learning_rate': 2.4920268866279855e-05, 'epoch': 0.21}
+{'loss': 1.5912, 'learning_rate': 2.4885240930395775e-05, 'epoch': 0.23}
+{'loss': 1.5914, 'learning_rate': 2.4843886602243532e-05, 'epoch': 0.25}
+{'loss': 1.5376, 'learning_rate': 2.4796227005651345e-05, 'epoch': 0.27}
+{'loss': 1.4751, 'learning_rate': 2.4742286485184257e-05, 'epoch': 0.29}
+{'loss': 1.5601, 'learning_rate': 2.46820925937089e-05, 'epoch': 0.31}
+{'loss': 1.4939, 'learning_rate': 2.461567607831948e-05, 'epoch': 0.33}
+{'loss': 1.5426, 'learning_rate': 2.4543070864632127e-05, 'epoch': 0.35}
+{'loss': 1.451, 'learning_rate': 2.4464314039455656e-05, 'epoch': 0.37}
+{'loss': 1.5256, 'learning_rate': 2.4379445831847583e-05, 'epoch': 0.39}
+{'loss': 1.5301, 'learning_rate': 2.4288509592565115e-05, 'epoch': 0.41}
+{'loss': 1.4889, 'learning_rate': 2.4191551771921518e-05, 'epoch': 0.43}
+{'loss': 1.4968, 'learning_rate': 2.4088621896059254e-05, 'epoch': 0.45}
+{'loss': 1.511, 'learning_rate': 2.3979772541652017e-05, 'epoch': 0.47}
+{'loss': 1.5272, 'learning_rate': 2.3865059309048466e-05, 'epoch': 0.49}
+{'loss': 1.4745, 'learning_rate': 2.3744540793871562e-05, 'epoch': 0.52}
+{'loss': 1.4495, 'learning_rate': 2.3618278557087854e-05, 'epoch': 0.54}
+{'loss': 1.4806, 'learning_rate': 2.3486337093562074e-05, 'epoch': 0.56}
+{'loss': 1.4868, 'learning_rate': 2.334878379911312e-05, 'epoch': 0.58}
+{'loss': 1.4993, 'learning_rate': 2.3205688936088203e-05, 'epoch': 0.6}
+{'loss': 1.5154, 'learning_rate': 2.3057125597472756e-05, 'epoch': 0.62}
+{'loss': 1.4878, 'learning_rate': 2.2903169669554506e-05, 'epoch': 0.64}
+{'loss': 1.4497, 'learning_rate': 2.2743899793160667e-05, 'epoch': 0.66}
+{'loss': 1.5373, 'learning_rate': 2.2579397323488145e-05, 'epoch': 0.68}
+{'loss': 1.4836, 'learning_rate': 2.240974628854721e-05, 'epoch': 0.7}
+{'loss': 1.4268, 'learning_rate': 2.2235033346239954e-05, 'epoch': 0.72}
+{'loss': 1.4797, 'learning_rate': 2.20553477400953e-05, 'epoch': 0.74}
+{'loss': 1.4356, 'learning_rate': 2.1870781253683375e-05, 'epoch': 0.76}
+{'loss': 1.4791, 'learning_rate': 2.168142816373236e-05, 'epoch': 0.78}
+{'loss': 1.4407, 'learning_rate': 2.148738519197184e-05, 'epoch': 0.8}
+{'loss': 1.4206, 'learning_rate': 2.1288751455727284e-05, 'epoch': 0.82}
+{'loss': 1.4686, 'learning_rate': 2.1085628417290805e-05, 'epoch': 0.84}
+{'loss': 1.4708, 'learning_rate': 2.0878119832094137e-05, 'epoch': 0.87}
+{'loss': 1.5001, 'learning_rate': 2.0666331695710258e-05, 'epoch': 0.89}
+{'loss': 1.4172, 'learning_rate': 2.0450372189710776e-05, 'epoch': 0.91}
+{'loss': 1.4752, 'learning_rate': 2.0230351626406663e-05, 'epoch': 0.93}
+{'loss': 1.4561, 'learning_rate': 2.0006382392500634e-05, 'epoch': 0.95}
+{'loss': 1.422, 'learning_rate': 1.977857889167992e-05, 'epoch': 0.97}
+{'loss': 1.4896, 'learning_rate': 1.9547057486178762e-05, 'epoch': 0.99}
+{'loss': 1.3555, 'learning_rate': 1.931193643734047e-05, 'epoch': 1.01}
+{'loss': 1.2838, 'learning_rate': 1.9073335845209433e-05, 'epoch': 1.03}
+{'loss': 1.2407, 'learning_rate': 1.8831377587183898e-05, 'epoch': 1.05}
+{'loss': 1.2815, 'learning_rate': 1.8586185255760874e-05, 'epoch': 1.07}
+{'loss': 1.3002, 'learning_rate': 1.8337884095405013e-05, 'epoch': 1.09}
+{'loss': 1.2717, 'learning_rate': 1.8086600938573567e-05, 'epoch': 1.11}
+{'loss': 1.218, 'learning_rate': 1.7832464140930315e-05, 'epoch': 1.13}
+{'loss': 1.3418, 'learning_rate': 1.757560351578132e-05, 'epoch': 1.15}
+{'loss': 1.3257, 'learning_rate': 1.7316150267766205e-05, 'epoch': 1.17}
+{'loss': 1.2766, 'learning_rate': 1.7054236925838703e-05, 'epoch': 1.19}
+{'loss': 1.2557, 'learning_rate': 1.678999727557074e-05, 'epoch': 1.22}
+{'loss': 1.221, 'learning_rate': 1.652356629081465e-05, 'epoch': 1.24}
+{'loss': 1.2823, 'learning_rate': 1.6255080064758388e-05, 'epoch': 1.26}
+{'loss': 1.2932, 'learning_rate': 1.5984675740409037e-05, 'epoch': 1.28}
+{'loss': 1.2615, 'learning_rate': 1.5712491440540035e-05, 'epoch': 1.3}
+{'loss': 1.2274, 'learning_rate': 1.54386661971379e-05, 'epoch': 1.32}
+{'loss': 1.2095, 'learning_rate': 1.5163339880384613e-05, 'epoch': 1.34}
+{'loss': 1.2545, 'learning_rate': 1.4886653127211757e-05, 'epoch': 1.36}
+{'loss': 1.226, 'learning_rate': 1.4608747269463091e-05, 'epoch': 1.38}
+{'loss': 1.2299, 'learning_rate': 1.4329764261702084e-05, 'epoch': 1.4}
+{'loss': 1.2274, 'learning_rate': 1.4049846608701403e-05, 'epoch': 1.42}
+{'loss': 1.2877, 'learning_rate': 1.3769137292651352e-05, 'epoch': 1.44}
+{'loss': 1.2229, 'learning_rate': 1.3487779700124436e-05, 'epoch': 1.46}
+{'loss': 1.2493, 'learning_rate': 1.3205917548833373e-05, 'epoch': 1.48}
+{'loss': 1.2785, 'learning_rate': 1.2923694814219953e-05, 'epoch': 1.5}
+{'loss': 1.2441, 'learning_rate': 1.2641255655912249e-05, 'epoch': 1.52}
+{'loss': 1.237, 'learning_rate': 1.2358744344087756e-05, 'epoch': 1.55}
+{'loss': 1.2912, 'learning_rate': 1.2076305185780047e-05, 'epoch': 1.57}
+{'loss': 1.2374, 'learning_rate': 1.1794082451166628e-05, 'epoch': 1.59}
+{'loss': 1.2128, 'learning_rate': 1.1512220299875567e-05, 'epoch': 1.61}
+{'loss': 1.2588, 'learning_rate': 1.1230862707348651e-05, 'epoch': 1.63}
+{'loss': 1.2283, 'learning_rate': 1.0950153391298602e-05, 'epoch': 1.65}
+{'loss': 1.2808, 'learning_rate': 1.0670235738297917e-05, 'epoch': 1.67}
+{'loss': 1.3285, 'learning_rate': 1.0391252730536912e-05, 'epoch': 1.69}
+{'loss': 1.233, 'learning_rate': 1.0113346872788245e-05, 'epoch': 1.71}
+{'loss': 1.3, 'learning_rate': 9.83666011961539e-06, 'epoch': 1.73}
+{'loss': 1.1997, 'learning_rate': 9.5613338028621e-06, 'epoch': 1.75}
+{'loss': 1.3196, 'learning_rate': 9.287508559459965e-06, 'epoch': 1.77}
+{'loss': 1.2222, 'learning_rate': 9.015324259590962e-06, 'epoch': 1.79}
+{'loss': 1.2388, 'learning_rate': 8.744919935241617e-06, 'epoch': 1.81}
+{'loss': 1.2243, 'learning_rate': 8.476433709185355e-06, 'epoch': 1.83}
+{'loss': 1.2718, 'learning_rate': 8.210002724429261e-06, 'epoch': 1.85}
+{'loss': 1.1632, 'learning_rate': 7.945763074161297e-06, 'epoch': 1.87}
+{'loss': 1.2723, 'learning_rate': 7.683849732233798e-06, 'epoch': 1.9}
+{'loss': 1.1678, 'learning_rate': 7.424396484218688e-06, 'epoch': 1.92}
+{'loss': 1.2347, 'learning_rate': 7.167535859069689e-06, 'epoch': 1.94}
+{'loss': 1.2914, 'learning_rate': 6.913399061426434e-06, 'epoch': 1.96}
+{'loss': 1.2603, 'learning_rate': 6.662115904594993e-06, 'epoch': 1.98}
+{'loss': 1.2274, 'learning_rate': 6.413814744239127e-06, 'epoch': 2.0}
+{'loss': 1.0862, 'learning_rate': 6.168622412816108e-06, 'epoch': 2.02}
+{'loss': 1.1423, 'learning_rate': 5.9266641547905694e-06, 'epoch': 2.04}
+{'loss': 1.1916, 'learning_rate': 5.688063562659532e-06, 'epoch': 2.06}
+{'loss': 1.1742, 'learning_rate': 5.452942513821242e-06, 'epoch': 2.08}
+{'loss': 1.1085, 'learning_rate': 5.221421108320083e-06, 'epoch': 2.1}
+{'loss': 1.1023, 'learning_rate': 4.993617607499371e-06, 'epoch': 2.12}
+{'loss': 1.0826, 'learning_rate': 4.76964837359334e-06, 'epoch': 2.14}
+{'loss': 1.0925, 'learning_rate': 4.549627810289226e-06, 'epoch': 2.16}
+{'loss': 1.1347, 'learning_rate': 4.333668304289744e-06, 'epoch': 2.18}
+{'loss': 1.1114, 'learning_rate': 4.121880167905867e-06, 'epoch': 2.2}
+{'loss': 1.1049, 'learning_rate': 3.914371582709196e-06, 'epoch': 2.23}
+{'loss': 1.1153, 'learning_rate': 3.7112485442727176e-06, 'epoch': 2.25}
+{'loss': 1.171, 'learning_rate': 3.5126148080281626e-06, 'epoch': 2.27}
+{'loss': 1.1696, 'learning_rate': 3.3185718362676406e-06, 'epoch': 2.29}
+{'loss': 1.142, 'learning_rate': 3.129218746316627e-06, 'epoch': 2.31}
+{'loss': 1.1093, 'learning_rate': 2.944652259904701e-06, 'epoch': 2.33}
+{'loss': 1.1878, 'learning_rate': 2.764966653760051e-06, 'epoch': 2.35}
+{'loss': 1.0918, 'learning_rate': 2.590253711452792e-06, 'epoch': 2.37}
+{'loss': 1.153, 'learning_rate': 2.420602676511857e-06, 'epoch': 2.39}
+{'loss': 1.157, 'learning_rate': 2.256100206839336e-06, 'epoch': 2.41}
+{'loss': 1.0983, 'learning_rate': 2.096830330445494e-06, 'epoch': 2.43}
+{'loss': 1.1581, 'learning_rate': 1.942874402527245e-06, 'epoch': 2.45}
+{'loss': 1.1052, 'learning_rate': 1.794311063911802e-06, 'epoch': 2.47}
+{'loss': 1.1509, 'learning_rate': 1.6512162008868779e-06, 'epoch': 2.49}
+{'loss': 1.1446, 'learning_rate': 1.5136629064379293e-06, 'epoch': 2.51}
+{'loss': 1.1172, 'learning_rate': 1.3817214429121498e-06, 'epoch': 2.53}
+{'loss': 1.0991, 'learning_rate': 1.2554592061284398e-06, 'epoch': 2.55}
+{'loss': 1.0864, 'learning_rate': 1.13494069095154e-06, 'epoch': 2.58}
+{'loss': 1.1211, 'learning_rate': 1.020227458347986e-06, 'epoch': 2.6}
+{'loss': 1.076, 'learning_rate': 9.113781039407451e-07, 'epoch': 2.62}
+{'loss': 1.1051, 'learning_rate': 8.084482280784859e-07, 'epoch': 2.64}
+{'loss': 1.1455, 'learning_rate': 7.114904074348866e-07, 'epoch': 2.66}
+{'loss': 1.1133, 'learning_rate': 6.205541681524194e-07, 'epoch': 2.68}
+{'loss': 1.0917, 'learning_rate': 5.356859605443465e-07, 'epoch': 2.7}
+{'loss': 1.1897, 'learning_rate': 4.569291353678715e-07, 'epoch': 2.72}
+{'loss': 1.1335, 'learning_rate': 3.8432392168051694e-07, 'epoch': 2.74}
+{'loss': 1.1355, 'learning_rate': 3.179074062911e-07, 'epoch': 2.76}
+{'loss': 1.1126, 'learning_rate': 2.577135148157439e-07, 'epoch': 2.78}
+{'loss': 1.0924, 'learning_rate': 2.037729943486541e-07, 'epoch': 2.8}
+{'loss': 1.1909, 'learning_rate': 1.5611339775646744e-07, 'epoch': 2.82}
+{'loss': 1.1316, 'learning_rate': 1.1475906960422555e-07, 'epoch': 2.84}
+{'loss': 1.1528, 'learning_rate': 7.973113372014701e-08, 'epoch': 2.86}
+{'loss': 1.0725, 'learning_rate': 5.104748240556123e-08, 'epoch': 2.88}
+{'loss': 1.1054, 'learning_rate': 2.8722767295501218e-08, 'epoch': 2.9}
+{'loss': 1.1119, 'learning_rate': 1.2768391874633246e-08, 'epoch': 2.93}
+{'loss': 1.1076, 'learning_rate': 3.1925056523524066e-09, 'epoch': 2.95}
+{'loss': 1.1275, 'learning_rate': 0.0, 'epoch': 2.97}
+{'train_runtime': 16371.5965, 'train_samples_per_second': 2.277, 'train_steps_per_second': 0.009, 'train_loss': 1.3040550127625465, 'epoch': 2.97}
+[2023-11-15 03:58:40,379] [INFO] [launch.py:347:main] Process 2545332 exits successfully.
+Finish training...
+[2023-11-15 03:58:42,382] [INFO] [launch.py:347:main] Process 2545331 exits successfully.

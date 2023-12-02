@@ -1,0 +1,57 @@
+# global parameters
+project_name: 'Data-Juicer-recipes-alpaca-cot-en'
+dataset_path: '<Working_Directory>/competition_kit/data/raw_data/raw_data_en.jsonl'  # path to your dataset directory or file
+export_path: '<Working_Directory>/processed_dataset_en.jsonl'
+
+np: 50  # number of subprocess to process your dataset
+open_tracer: true
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - clean_email_mapper:
+  - clean_links_mapper:
+  - fix_unicode_mapper:
+  - punctuation_normalization_mapper:
+  - whitespace_normalization_mapper:
+  
+  - document_deduplicator:
+      lowercase: true 
+      ignore_non_character: true
+      
+  - alphanumeric_filter:
+      tokenization: false
+      min_ratio: 0.1  
+  - character_repetition_filter:
+      rep_len: 10
+      max_ratio: 0.3
+  - flagged_words_filter:
+      lang: en
+      tokenization: true
+      max_ratio: 0.017  
+  - maximum_line_length_filter:
+      min_len: 20
+  - perplexity_filter:
+      lang: en
+      max_ppl: 1200
+  - special_characters_filter:
+      max_ratio: 0.3
+  
+  - words_num_filter:
+      tokenization: true
+      min_num: 380
+      max_num: 2000
+
+  - document_simhash_deduplicator:
+      tokenization: space
+      window_size: 3
+      lowercase: true
+      ignore_pattern: '\p{P}'
+      num_blocks: 9
+      hamming_distance: 7
+
+  - language_id_score_filter:
+      lang: 'en'
+      min_score: 0.93
+
+
