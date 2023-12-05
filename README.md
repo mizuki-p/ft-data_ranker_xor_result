@@ -1,9 +1,16 @@
-本仓库为FT-Data Ranker：大语言模型微调数据竞赛 -- 1B模型赛道第X名队伍的代码仓库
+本仓库为FT-Data Ranker：大语言模型微调数据竞赛 -- 1B模型赛道第13名队伍的代码仓库
+
+
 
 本仓库包含用于复现本队伍结果所需的相关代码、数据和模型，原始数据和模型请参照[比赛页面的说明](https://tianchi.aliyun.com/competition/entrance/532157/customize404)
 
+
+
 该仓库内文件路径：
 
+
+
+```
 ├──模型文件
 │  ├──added_tokens.json
 │  ├──config.json
@@ -31,11 +38,16 @@
 │  └──get_train_dataset_1b.py
 ├──数据文件.jsonl
 └──README.md
+```
 
 
 
 复现方法：
+
+
 安装、配置比赛页面“提交指南”中第一节所述的环境，并下载第二节中的原始基础模和原始数据集
+
+
 
 仓库内"模型文件/pytorch_model.bin"文件可通过[百度网盘下载](https://pan.baidu.com/s/1ImFYfxIRkidOUc_KRdrnZQ?pwd=p4ns)
 
@@ -60,6 +72,10 @@
 
    参数 <model_path> 为下载的原始基模的路径。
 
+
+
    参数 <data_path> 为您使用Data-juicer改良后的数据集， 即上述P2。
+
+
 
    参数 <output_path> 为保存您训练后的模型的路径。
